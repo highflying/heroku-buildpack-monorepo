@@ -15,9 +15,13 @@ fi
 APP_BASE="$(cat "${ENV_DIR}/APP_BASE")"
 
 (
+    ls -l "${BUILD_DIR}" &&
+    mv "${BUILD_DIR}/common" "${STAGE}" &&
     mv "${BUILD_DIR}/${APP_BASE}" "${STAGE}" &&
-    rm -rf "${BUILD_DIR}" &&
-    mv "${STAGE}/$(basename "$APP_BASE")" "${BUILD_DIR}"
+    shopt -s dotglob nullglob &&
+    rm -rf "${BUILD_DIR}"/* &&
+    mv "${STAGE}/$(basename "$APP_BASE")"/* "${BUILD_DIR}" &&
+    mv -f "${STAGE}"/common "${BUILD_DIR}"/.
 )
 
 if [ $? -ne 0 ]; then
