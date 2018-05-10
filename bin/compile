@@ -8,12 +8,11 @@ CACHE_DIR="$2"
 ENV_DIR="$3"
 STAGE="$(mktemp -d)"
 
-if [ ! -f "${ENV_DIR}/APP_BASE" ]; then
-    echo "APP_BASE was not set. Aborting" | indent
+if [ ! -f "${ENV_DIR}/APP" ]; then
+    echo "APP was not set. Aborting" | indent
     exit 1
 fi
-APP_BASE="$(cat "${ENV_DIR}/APP_BASE")"
-APP="spider"
+APP="$(cat "${ENV_DIR}/APP")"
 
 (
     cd "${BUILD_DIR}" &&
