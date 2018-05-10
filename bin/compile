@@ -17,7 +17,6 @@ APP="spider"
 
 (
     cd "${BUILD_DIR}" &&
-    ls -l && 
     mv common "${STAGE}/." &&
     mkdir "${STAGE}/apps" &&
     mv "apps/${APP}" "${STAGE}/apps/." &&
@@ -31,21 +30,11 @@ APP="spider"
     ln -s "./apps/${APP}/package.json" "./package.json" &&
     ln -s "./apps/${APP}/src" "./src" &&
     cp "./apps/${APP}/.npmrc" .
-    # mkdir "./apps/${APP}/node_modules" &&
-    # ln -s "./apps/${APP}/node_modules" "./node_modules" 
 )
 
 if [ $? -ne 0 ]; then
     echo "FAILED to copy directory into place" | indent
-    echo "Build Dir" | indent
-    ls -lR $BUILD_DIR | head -100
-    echo "STAGE Dir" | indent
-    ls -lR $STAGE | head -100
-    exit 1
 fi
-
-ls -l ${BUILD_DIR}
-ls -l ${BUILD_DIR}/common
 
 echo "Copied ${APP_BASE} to root of app successfully" | indent
 
