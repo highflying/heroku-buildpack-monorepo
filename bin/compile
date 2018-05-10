@@ -29,7 +29,8 @@ APP="spider"
     ln -s "./apps/${APP}/tsconfig.json" "./tsconfig.json" &&
     ln -s "./apps/${APP}/tsconfig.build.json" "./tsconfig.build.json" &&
     ln -s "./apps/${APP}/package.json" "./package.json" &&
-    ln -s "./apps/${APP}/src" "./src"
+    ln -s "./apps/${APP}/src" "./src" &&
+    cp "./apps/${APP}/.npmrc" .
     # mkdir "./apps/${APP}/node_modules" &&
     # ln -s "./apps/${APP}/node_modules" "./node_modules" 
 )
