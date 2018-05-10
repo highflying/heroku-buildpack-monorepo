@@ -15,20 +15,20 @@ fi
 APP_BASE="$(cat "${ENV_DIR}/APP_BASE")"
 
 (
-    ls -l "${BUILD_DIR}" &&
-    mv "${BUILD_DIR}/common" "${STAGE}" &&
-    mv "${BUILD_DIR}/${APP_BASE}" "${STAGE}" &&
+    cd "${BUILD_DIR}"
+    mv "common" "${STAGE}" &&
+    mv "${APP_BASE}" "${STAGE}" &&
     # shopt -s dotglob nullglob &&
-    rm -rf "${BUILD_DIR}"/* &&
-    mkdir "${BUILD_DIR}/apps" &&
-    mv -f "${STAGE}/${APP_BASE}" "${BUILD_DIR}/apps/." &&
-    mv -f "${STAGE}"/common "${BUILD_DIR}"/. &&
-    ln -s "${BUILD_DIR}/${APP_BASE}/tsconfig.json" "${BUILD_DIR}/tsconfig.json" &&
-    ln -s "${BUILD_DIR}/${APP_BASE}/tsconfig.build.json" "${BUILD_DIR}/tsconfig.build.json" &&
-    ln -s "${BUILD_DIR}/${APP_BASE}/package.json" "${BUILD_DIR}/package.json" &&
-    ln -s "${BUILD_DIR}/${APP_BASE}/src" "${BUILD_DIR}/src" &&
-    mkdir "${BUILD_DIR}/${APP_BASE}/node_modules" &&
-    ln -s "${BUILD_DIR}/${APP_BASE}/node_modules" "${BUILD_DIR}/node_modules" 
+    rm -rf ./* &&
+    mkdir "apps" &&
+    mv -f "${STAGE}/${APP_BASE}" "./apps/." &&
+    mv -f "${STAGE}"/common . &&
+    ln -s "${APP_BASE}/tsconfig.json" "./tsconfig.json" &&
+    ln -s "${APP_BASE}/tsconfig.build.json" "./tsconfig.build.json" &&
+    ln -s "${APP_BASE}/package.json" "./package.json" &&
+    ln -s "${APP_BASE}/src" "./src" &&
+    mkdir "${APP_BASE}/node_modules" &&
+    ln -s "${APP_BASE}/node_modules" "./node_modules" 
 )
 
 if [ $? -ne 0 ]; then
