@@ -34,7 +34,10 @@ APP_BASE="$(cat "${ENV_DIR}/APP_BASE")"
 
 if [ $? -ne 0 ]; then
     echo "FAILED to copy directory into place" | indent
+    echo "Build Dir" | indent
     ls -lR $BUILD_DIR
+    echo "STAGE Dir" | indent
+    ls -lR $STAGE
     exit 1
 fi
 
