@@ -15,7 +15,7 @@ fi
 APP_BASE="$(cat "${ENV_DIR}/APP_BASE")"
 
 (
-    cd "${BUILD_DIR}"
+    cd "${BUILD_DIR}" &&
     mv "common" "${STAGE}" &&
     mv "${APP_BASE}" "${STAGE}" &&
     # shopt -s dotglob nullglob &&
