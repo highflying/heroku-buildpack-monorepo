@@ -23,7 +23,7 @@ APP="$(cat "${ENV_DIR}/APP")"
     rm -rf ./* &&
     # mkdir "apps" &&
     # mv -f "${STAGE}/apps/${APP}" "./apps/." &&
-    mv -fr "${STAGE}/apps/${APP}/*" "." &&
+    mv -f ${STAGE}/apps/${APP}/* "." &&
     mv -f "${STAGE}/apps/${APP}/.npmrc" "."
     # (mv -f "${STAGE}/common" . || exit 0) &&
     # ln -s "./apps/${APP}/tsconfig.json" "./tsconfig.json" &&
