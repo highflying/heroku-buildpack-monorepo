@@ -16,14 +16,14 @@ APP="$(cat "${ENV_DIR}/APP")"
 
 (
     cd "${BUILD_DIR}" &&
-    mv common "${STAGE}/." &&
+    (mv common "${STAGE}/." || exit 0) &&
     mkdir "${STAGE}/apps" &&
     mv "apps/${APP}" "${STAGE}/apps/." &&
     # shopt -s dotglob nullglob &&
     rm -rf ./* &&
     mkdir "apps" &&
     mv -f "${STAGE}/apps/${APP}" "./apps/." &&
-    mv -f "${STAGE}/common" . &&
+    (mv -f "${STAGE}/common" . || exit 0) &&
     ln -s "./apps/${APP}/tsconfig.json" "./tsconfig.json" &&
     ln -s "./apps/${APP}/tsconfig.build.json" "./tsconfig.build.json" &&
     ln -s "./apps/${APP}/package.json" "./package.json" &&
