@@ -29,6 +29,7 @@ APP="$(cat "${ENV_DIR}/APP")"
     ln -s "./apps/${APP}/package.json" "./package.json" &&
     ln -s "./apps/${APP}/src" "./src" &&
     ln -s "./apps/${APP}/public" "./public" &&
+    ln -s "./apps/${APP}/yarn.lock" "./yarn.lock" &&
     cp "./apps/${APP}/.npmrc" .
 )
 
