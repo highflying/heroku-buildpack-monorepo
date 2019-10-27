@@ -37,5 +37,7 @@ if [ $? -ne 0 ]; then
     echo "FAILED to copy directory into place" | indent
 fi
 
+ls -lR ./apps
+
 echo "Copied ${APP_BASE} to root of app successfully" | indent
 
