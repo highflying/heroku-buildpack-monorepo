@@ -28,6 +28,7 @@ APP="$(cat "${ENV_DIR}/APP")"
     ln -s "./apps/${APP}/tsconfig.build.json" "./tsconfig.build.json" &&
     ln -s "./apps/${APP}/package.json" "./package.json" &&
     ln -s "./apps/${APP}/src" "./src" &&
+    ln -s "./apps/${APP}/public" "./public" &&
     cp "./apps/${APP}/.npmrc" .
 )
 
